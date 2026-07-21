@@ -1,0 +1,6 @@
+﻿// Cloudflare Workers static-assets config for the eveconsole.com homepage (no build step; serves ./public).
+{
+  "name": "eveconsole-web",
+  "compatibility_date": "2024-09-25",
+  "assets": { "directory": "./public" }
+}

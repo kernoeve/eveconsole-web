@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EVE Console — a free, open-source companion for EVE Online</title>
+<meta name="description" content="EVE Console is a free, open-source desktop companion for EVE Online: market pricing, industry planning, wealth tracking, and corp oversight — computed on your own machine, and your data stays on your device.">
+<style>
+  :root{
+    --ground:#0b0b0f; --panel:#13131c; --panel-2:#171722; --line:#242433; --line-2:#2f2f42;
+    --amber:#c8a84b; --gold:#e6c163; --amber-dim:#8a7636;
+    --text:#c9c9d6; --head:#ececf2; --muted:#7a7a8c; --faint:#565667;
+    --good:#5fb98f;
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--ground); color:var(--text);
+    font-family:var(--sans); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:44px 44px, 44px 44px;
+    background-position:center top;
+  }
+  body::before{ /* faint scanlines */
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:2; opacity:.35;
+    background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(0,0,0,.35) 3px 4px);
+    mix-blend-mode:multiply;
+  }
+  a{color:var(--gold); text-decoration:none}
+  a:hover{color:var(--amber)}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:2px}
+  img{max-width:100%; display:block}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  .mono{font-family:var(--mono)}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--amber)}
+
+  /* ── faux title bar ─────────────────────────────── */
+  .titlebar{
+    position:sticky; top:0; z-index:5; background:rgba(9,9,13,.92);
+    border-bottom:1px solid var(--line); backdrop-filter:blur(6px);
+    font-family:var(--mono); font-size:12px; letter-spacing:.1em;
+  }
+  .titlebar .wrap{display:flex; align-items:center; gap:14px; height:38px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px var(--amber)}
+  .titlebar .name{color:var(--head)}
+  .titlebar .name b{color:var(--amber)}
+  .titlebar .spacer{flex:1}
+  .titlebar .meta{color:var(--muted); text-transform:uppercase}
+  .titlebar .nav{display:flex; gap:18px}
+  .titlebar .nav a{color:var(--muted); text-transform:uppercase}
+  .titlebar .nav a:hover{color:var(--gold)}
+  @media(max-width:640px){ .titlebar .nav,.titlebar .meta{display:none} }
+
+  /* ── hero ───────────────────────────────────────── */
+  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; min-height:66vh}
+  .hero .bg{position:absolute; inset:0; z-index:0; background-size:cover; background-position:center right;
+    opacity:.85; filter:saturate(1.06)}
+  .hero .bg::after{content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(85% 78% at 50% 46%, rgba(11,11,15,.30), rgba(11,11,15,.72) 80%),
+      linear-gradient(180deg, rgba(11,11,15,.20) 0%, rgba(11,11,15,0) 30%, var(--ground) 99%)}
+  .hero .wrap{position:relative; z-index:1; padding:84px 24px 88px; text-align:center; width:100%}
+  .wordmark{font-family:var(--sans); font-weight:800; letter-spacing:.06em;
+    font-size:clamp(44px,9vw,92px); line-height:1; margin:0; text-wrap:balance;
+    text-shadow:0 2px 34px rgba(0,0,0,.55)}
+  .wordmark .a{color:var(--head)} .wordmark .b{color:var(--amber)}
+  .tagline{font-size:clamp(17px,2.4vw,22px); color:var(--head); margin:20px auto 0; max-width:36ch;
+    text-wrap:balance; text-shadow:0 1px 16px rgba(0,0,0,.6)}
+  .subline{color:var(--text); margin:12px auto 0; max-width:56ch; text-shadow:0 1px 14px rgba(0,0,0,.7)}
+  .actions{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:30px 0 0}
+  .btn{font-family:var(--mono); font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:9px; padding:13px 20px; border-radius:6px;
+    border:1px solid var(--line-2); color:var(--text); background:var(--panel);
+    transition:transform .12s ease, border-color .12s ease, color .12s ease, box-shadow .12s ease}
+  .btn:hover{transform:translateY(-2px); border-color:var(--amber-dim); color:var(--head)}
+  .btn.primary{background:linear-gradient(180deg,#d8b657,var(--amber)); color:#12100a; border-color:transparent;
+    font-weight:700; box-shadow:0 6px 24px rgba(200,168,75,.25)}
+  .btn.primary:hover{color:#0d0b06; box-shadow:0 10px 30px rgba(200,168,75,.38)}
+  .btn svg{width:15px;height:15px;flex:none}
+  .statusline{font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--faint);
+    margin:22px 0 0; text-transform:uppercase}
+  .statusline b{color:var(--amber)}
+
+  /* ── section chrome ─────────────────────────────── */
+  section{padding:76px 0; border-bottom:1px solid var(--line)}
+  .sec-head{display:flex; align-items:baseline; gap:16px; margin:0 0 34px}
+  .sec-head h2{font-family:var(--sans); font-weight:800; font-size:clamp(26px,4vw,38px);
+    color:var(--head); margin:0; letter-spacing:.01em; text-wrap:balance}
+  .sec-head .idx{font-family:var(--mono); color:var(--amber); font-size:13px; letter-spacing:.14em}
+
+  /* ── about ──────────────────────────────────────── */
+  .about p{font-size:clamp(17px,2.3vw,21px); max-width:64ch; color:var(--text)}
+  .chips{display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 0}
+  .chip{font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    padding:7px 12px; border:1px solid var(--line-2); border-radius:100px; color:var(--muted); background:var(--panel)}
+  .chip.good{color:var(--good); border-color:#2c4a3f}
+  .chip b{color:var(--amber)}
+
+  /* ── features ───────────────────────────────────── */
+  .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+    border:1px solid var(--line); border-radius:10px; overflow:hidden}
+  @media(max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:520px){ .grid{grid-template-columns:1fr} }
+  .cell{background:var(--panel); padding:24px 22px 26px; transition:background .15s ease}
+  .cell:hover{background:var(--panel-2)}
+  .cell .k{font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--amber)}
+  .cell .t{font-weight:700; color:var(--head); margin:12px 0 6px; font-size:16px}
+  .cell p{margin:0; font-size:14.5px; color:var(--muted); line-height:1.55}
+
+  /* ── screenshots ────────────────────────────────── */
+  .shots{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px}
+  .shot{border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--panel);
+    display:block; width:100%; padding:0; margin:0; text-align:left; color:inherit; font:inherit;
+    cursor:zoom-in; transition:border-color .15s ease, transform .15s ease}
+  .shot:hover{border-color:var(--amber-dim); transform:translateY(-3px)}
+  .shot .cap{display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:11px 14px; border-bottom:1px solid var(--line); font-family:var(--mono);
+    font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--text)}
+  .shot .cap .go{color:var(--faint)}
+  .shot:hover .cap .go{color:var(--amber)}
+  .shot .frame{display:block; background:#0d0d12; overflow:hidden; aspect-ratio:16/10}
+  .shot .frame img{width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .35s ease}
+  .shot:hover .frame img{transform:scale(1.04)}
+  .shots-note{font-family:var(--mono); font-size:12px; color:var(--faint); margin:22px 0 0; letter-spacing:.05em}
+  /* lightbox */
+  .lightbox{position:fixed; inset:0; z-index:50; overflow:auto; padding:0;
+    background:rgba(5,5,8,.94); backdrop-filter:blur(5px)}
+  .lightbox[hidden]{display:none}
+  /* native 1:1 — never scaled, so it's exactly the source PNG; scroll if larger than the window */
+  .lightbox img{display:block; margin:26px auto 60px; max-width:none; height:auto; image-rendering:auto;
+    border:1px solid var(--line-2); border-radius:8px; box-shadow:0 24px 70px rgba(0,0,0,.65)}
+  @media(max-width:900px){ .lightbox img{max-width:96vw; height:auto} }
+  .lb-cap{position:fixed; left:0; right:0; bottom:18px; text-align:center; font-family:var(--mono);
+    font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--text); text-shadow:0 1px 6px #000}
+  .lb-close{position:fixed; top:16px; right:18px; width:42px; height:42px; border-radius:8px;
+    background:var(--panel); border:1px solid var(--line-2); color:var(--text); font-size:17px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center}
+  .lb-close:hover{color:var(--head); border-color:var(--amber-dim)}
+
+  /* ── download band ──────────────────────────────── */
+  .cta{text-align:center; border-bottom:1px solid var(--line)}
+  .cta h2{font-size:clamp(26px,4.4vw,42px); font-weight:800; color:var(--head); margin:0 0 10px; text-wrap:balance}
+  .cta p{color:var(--muted); margin:0 auto 26px; max-width:52ch}
+
+  /* ── footer ─────────────────────────────────────── */
+  footer{padding:48px 0 60px}
+  .foot{display:flex; flex-wrap:wrap; gap:26px 40px; align-items:flex-start; justify-content:space-between}
+  .foot .brand{font-family:var(--mono); letter-spacing:.08em; color:var(--head)}
+  .foot .brand b{color:var(--amber)}
+  .foot .cols{display:flex; gap:56px; flex-wrap:wrap}
+  .foot .col h4{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--faint); margin:0 0 12px}
+  .foot .col a{display:block; color:var(--muted); font-size:14px; margin:0 0 8px}
+  .foot .col a:hover{color:var(--gold)}
+  .legal{margin:34px 0 0; padding-top:22px; border-top:1px solid var(--line);
+    color:var(--faint); font-size:12.5px; line-height:1.6; max-width:80ch}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important}
+  }
+</style>
+<link rel="icon" href="favicon.ico">
+</head>
+<body>
+
+  <!-- title bar -->
+  <div class="titlebar">
+    <div class="wrap">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="name">EVE&nbsp;<b>Console</b></span>
+      <span class="spacer"></span>
+      <nav class="nav">
+        <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
+        <a href="https://docs.eveconsole.com/">Docs</a>
+        <a href="https://github.com/kernoeve/EveConsole">GitHub</a>
+      </nav>
+      <span class="meta">// Windows · Beta 0.9.x</span>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <header class="hero">
+    <div class="bg" style="background-image:url('images/splash.jpg')"></div>
+    <div class="wrap">
+      <h1 class="wordmark"><span class="a">EVE</span> <span class="b">Console</span></h1>
+      <p class="tagline">Your EVE Online command console.</p>
+      <p class="subline">Markets, industry, wealth, and corp — computed on your machine, from your own ESI data. Free, open source, and your data stays on your device.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-win-Setup.exe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          Download for Windows
+        </a>
+        <a class="btn" href="https://docs.eveconsole.com/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11a3 3 0 013 3v11M4 5v14a2 2 0 002 2h11M4 5a2 2 0 012-2h9"/></svg>
+          Documentation
+        </a>
+        <a class="btn" href="https://github.com/kernoeve/EveConsole">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.9-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.6.69.49A10.03 10.03 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+      <p class="statusline">// Windows 10/11 &nbsp;·&nbsp; <b>Beta 0.9.x</b> &nbsp;·&nbsp; Nothing uploaded</p>
+    </div>
+  </header>
+
+  <!-- about -->
+  <section class="about">
+    <div class="wrap">
+      <div class="sec-head"><span class="idx">01</span><h2>One console for the tools you already juggle</h2></div>
+      <p>EVE&nbsp;Console pulls your characters' and corporation's data from EVE's ESI API into a local SQLite database on your PC, and turns it into the tools you'd otherwise spread across a handful of separate apps and spreadsheets — market pricing, industry planning, wealth tracking, and corp oversight. It refreshes in the background while it runs, and your data never leaves your machine.</p>
+      <div class="chips">
+        <span class="chip good">Free &amp; open source</span>
+        <span class="chip">Your data stays on <b>your device</b></span>
+        <span class="chip">Background ESI sync</span>
+        <span class="chip">Auto-updates</span>
+        <span class="chip">Optional AI agent</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- features -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head"><span class="idx">02</span><h2>What's inside</h2></div>
+      <div class="grid">
+        <div class="cell"><div class="k">Market</div><div class="t">Pricing &amp; build costs</div><p>Per-item prices from the markets you define, with outlier filtering and build-cost floors — plus a computed build cost for every craftable item.</p></div>
+        <div class="cell"><div class="k">Industry</div><div class="t">Production Calculator</div><p>Plan jobs end to end: materials, multi-level builds, ME levels, and profit against your real structures and rigs.</p></div>
+        <div class="cell"><div class="k">Trade</div><div class="t">Opportunities</div><p>Compare two markets and surface profitable hauls, ranked by ISK and by cargo volume.</p></div>
+        <div class="cell"><div class="k">Finance</div><div class="t">Wealth tracking</div><p>Net worth over time, plus a categorized breakdown of where your ISK comes from and goes.</p></div>
+        <div class="cell"><div class="k">Corp</div><div class="t">Activity &amp; oversight</div><p>Ratting, industry and mining tax, donations, killmails, projects, and Top&nbsp;10 leaderboards.</p></div>
+        <div class="cell"><div class="k">Browse</div><div class="t">Items, assets, contracts</div><p>Every item in the game with attributes, orders and price history — and search across all your assets and contracts.</p></div>
+        <div class="cell"><div class="k">Assistant</div><div class="t">AI agent (Eden)</div><p>An optional companion that can query your local data to answer what the UI doesn't. Inactive until you set it up.</p></div>
+        <div class="cell"><div class="k">Upkeep</div><div class="t">Stays current</div><p>Installed builds check for updates and prompt you in-app — no manual re-downloading.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- screenshots -->
+  <section id="screens">
+    <div class="wrap">
+      <div class="sec-head"><span class="idx">03</span><h2>See it in action</h2></div>
+      <div class="shots">
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Market Overview</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/4.jpg" data-full="images/full/4.png" alt="Market Overview dashboard with order and sales summaries and a daily-sales chart" loading="lazy"></span></button>
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Item Browser — Price History</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/2.jpg" data-full="images/full/2.png" alt="Item Browser price-history chart for a ship" loading="lazy"></span></button>
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Item Browser — Market Orders</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/1.jpg" data-full="images/full/1.png" alt="Item Browser showing live buy and sell orders" loading="lazy"></span></button>
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Production Calculator</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/3.jpg" data-full="images/full/3.png" alt="Production Calculator showing build cost and materials for a capital ship" loading="lazy"></span></button>
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Industry Opportunities</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/7.jpg" data-full="images/full/7.png" alt="Industry Opportunities ranking build-and-sell margins across items" loading="lazy"></span></button>
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Industry Jobs</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/9.jpg" data-full="images/full/9.png" alt="Industry Jobs listing active manufacturing and research jobs" loading="lazy"></span></button>
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Trade Opportunities</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/6.jpg" data-full="images/full/6.png" alt="Trade Opportunities table comparing two markets by profit" loading="lazy"></span></button>
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Inventory Levels</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/8.jpg" data-full="images/full/8.png" alt="Inventory Levels tracking stockpile targets versus what is available" loading="lazy"></span></button>
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Market Settings</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/5.jpg" data-full="images/full/5.png" alt="Market price-source settings" loading="lazy"></span></button>
+        <button class="shot" type="button"><span class="cap"><span class="cap-text">Corp Activity</span><span class="go">enlarge ⤢</span></span><span class="frame"><img src="images/thumb/10.jpg" data-full="images/full/10.png" alt="Corp Activity with ratting, industry and killmail summaries" loading="lazy"></span></button>
+      </div>
+      <p class="shots-note">// Every tool has its own page in the <a href="https://docs.eveconsole.com/">documentation</a>.</p>
+    </div>
+  </section>
+
+  <!-- lightbox -->
+  <div class="lightbox" id="lb" hidden>
+    <button class="lb-close" type="button" aria-label="Close">✕</button>
+    <img id="lb-img" alt="">
+    <div class="lb-cap" id="lb-cap"></div>
+  </div>
+  <script>
+  (function(){
+    var lb=document.getElementById('lb'), img=document.getElementById('lb-img'), cap=document.getElementById('lb-cap');
+    function openLb(el){ var im=el.querySelector('img'), c=el.querySelector('.cap-text');
+      img.src=im.getAttribute('data-full')||im.src; img.alt=im.alt; cap.textContent=c?c.textContent:''; lb.hidden=false; document.body.style.overflow='hidden'; }
+    function closeLb(){ lb.hidden=true; img.removeAttribute('src'); document.body.style.overflow=''; }
+    document.querySelectorAll('.shot').forEach(function(el){ el.addEventListener('click', function(){ openLb(el); }); });
+    lb.addEventListener('click', function(e){ if(e.target===lb || e.target.closest('.lb-close')) closeLb(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !lb.hidden) closeLb(); });
+  })();
+  </script>
+
+  <!-- download cta -->
+  <section class="cta">
+    <div class="wrap">
+      <span class="eyebrow">Ready when you are</span>
+      <h2>Bring your data home.</h2>
+      <p>Download the Windows build and log in a character — everything stays on your machine.</p>
+      <div class="actions" style="justify-content:center">
+        <a class="btn primary" href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-win-Setup.exe">Download for Windows</a>
+        <a class="btn" href="https://github.com/kernoeve/EveConsole/releases/latest">All downloads</a>
+        <a class="btn" href="https://docs.eveconsole.com/getting-started/">Setup guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <div class="brand">EVE&nbsp;<b>Console</b></div>
+          <p style="color:var(--muted); max-width:38ch; margin:12px 0 0; font-size:14px">A free, open-source desktop companion for EVE Online — your data stays on your device.</p>
+        </div>
+        <div class="cols">
+          <div class="col"><h4>Get it</h4>
+            <a href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-win-Setup.exe">Windows installer</a>
+            <a href="https://github.com/kernoeve/EveConsole/releases/latest">All releases</a>
+          </div>
+          <div class="col"><h4>Learn</h4>
+            <a href="https://docs.eveconsole.com/">Documentation</a>
+            <a href="https://docs.eveconsole.com/getting-started/">Getting started</a>
+            <a href="https://docs.eveconsole.com/faq-and-troubleshooting/">FAQ</a>
+          </div>
+          <div class="col"><h4>Source</h4>
+            <a href="https://github.com/kernoeve/EveConsole">GitHub repository</a>
+            <a href="https://github.com/kernoeve/EveConsole/blob/main/LICENSE">License (GPL-3.0)</a>
+          </div>
+        </div>
+      </div>
+      <p class="legal">EVE Console is a third-party tool and is not affiliated with or endorsed by CCP Games. EVE Online and the EVE logo are trademarks of CCP hf. All EVE-related materials are property of CCP hf.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
