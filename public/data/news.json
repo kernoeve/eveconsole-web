@@ -1,0 +1,9 @@
+[
+  {
+    "date": "2026-07-21",
+    "tag": "Release",
+    "title": "EVE Console 0.9.9 — Eve Cortex is now EVE Console",
+    "summary": "The app formerly known as Eve Cortex is now EVE Console. This release completes the rebrand — new identity and branding, with a one-time data migration that carries existing users across — folds in a fix for a contract-sweep crash plus everything since v0.9.6, and moves the docs to docs.eveconsole.com. Windows installer and portable builds, with automatic updates.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.9" }
+  }
+]

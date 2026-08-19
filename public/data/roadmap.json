@@ -1,0 +1,27 @@
+{
+  "target": "1.0",
+  "updated": "2026-08-19",
+  "note": "Roadmap is indicative, not a commitment — priorities can shift.",
+  "items": [
+    {
+      "title": "Additional database backends",
+      "status": "planned",
+      "note": "Run EVE Console on databases beyond the built-in SQLite — starting with PostgreSQL — with migration paths to move your data between database types."
+    },
+    {
+      "title": "EVE Mail–driven market orders",
+      "status": "planned",
+      "note": "Drive market-order placement, tracking, and updates through in-game EVE Mail."
+    },
+    {
+      "title": "Native Linux support",
+      "status": "planned",
+      "note": "First-class, compiled Linux releases of EVE Console alongside Windows."
+    },
+    {
+      "title": "Standalone background service",
+      "status": "planned",
+      "note": "Separate the background workers — ESI polling and syncing — from the desktop client so they can run continuously on their own: headless, on another machine, or in a container."
+    }
+  ]
+}

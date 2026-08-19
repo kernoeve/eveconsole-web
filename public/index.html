@@ -162,6 +162,46 @@
   .legal{margin:34px 0 0; padding-top:22px; border-top:1px solid var(--line);
     color:var(--faint); font-size:12.5px; line-height:1.6; max-width:80ch}
 
+  /* ── roadmap ────────────────────────────────────── */
+  .rm-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:-14px 0 26px}
+  .rm-head .target{font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+  .rm-head .target b{color:var(--amber)}
+  .rm-head .disclaimer{font-family:var(--mono); font-size:12px; color:var(--faint); letter-spacing:.04em}
+  .roadmap{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+  @media(max-width:720px){ .roadmap{grid-template-columns:1fr} }
+  .rmcard{position:relative; border:1px solid var(--line); border-radius:10px; background:var(--panel);
+    padding:22px; transition:border-color .15s ease, background .15s ease, transform .15s ease}
+  .rmcard:hover{border-color:var(--amber-dim); background:var(--panel-2); transform:translateY(-2px)}
+  .rmcard .top{display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 12px}
+  .rmcard .num{font-family:var(--mono); font-size:12px; letter-spacing:.14em; color:var(--faint)}
+  .rmcard .st{display:inline-flex; align-items:center; gap:7px; font-family:var(--mono); font-size:10.5px;
+    letter-spacing:.12em; text-transform:uppercase; padding:4px 11px; border-radius:100px;
+    border:1px solid var(--line-2); color:var(--muted)}
+  .rmcard .st .s{width:7px; height:7px; border-radius:50%; background:var(--faint); flex:none}
+  .rmcard .st.progress{color:var(--gold); border-color:var(--amber-dim)}
+  .rmcard .st.progress .s{background:var(--gold); box-shadow:0 0 7px rgba(230,193,99,.55)}
+  .rmcard .st.done{color:var(--good); border-color:#2c4a3f}
+  .rmcard .st.done .s{background:var(--good); box-shadow:0 0 7px rgba(95,185,143,.6)}
+  .rmcard h3{margin:0; font-size:17px; font-weight:700; color:var(--head); line-height:1.3; text-wrap:balance}
+  .rmcard p{margin:9px 0 0; font-size:14px; color:var(--muted); line-height:1.55}
+
+  /* ── news ───────────────────────────────────────── */
+  .news-list{display:grid; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+  .news-item{background:var(--panel); padding:22px; display:grid; grid-template-columns:170px 1fr; gap:22px;
+    transition:background .15s ease}
+  .news-item:hover{background:var(--panel-2)}
+  .news-item .meta{display:flex; flex-direction:column; gap:9px}
+  .news-item .when{font-family:var(--mono); font-size:12.5px; letter-spacing:.05em; color:var(--faint)}
+  .news-item .tag{align-self:flex-start; font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+    padding:4px 10px; border:1px solid var(--line-2); border-radius:100px; color:var(--amber); background:var(--panel)}
+  .news-item .tag.release{color:#12100a; background:linear-gradient(180deg,#d8b657,var(--amber)); border-color:transparent; font-weight:700}
+  .news-item .body h3{margin:0; font-size:18px; font-weight:700; color:var(--head); line-height:1.3; text-wrap:balance}
+  .news-item .body p{margin:8px 0 0; font-size:14.5px; color:var(--muted); line-height:1.55; max-width:70ch}
+  .news-item .body .more{display:inline-block; margin:12px 0 0; font-family:var(--mono); font-size:12px;
+    letter-spacing:.05em; text-transform:uppercase}
+  .news-empty{font-family:var(--mono); font-size:13px; color:var(--faint); padding:24px 4px}
+  @media(max-width:640px){ .news-item{grid-template-columns:1fr; gap:12px} .news-item .meta{flex-direction:row; align-items:center} }
+
   @media(prefers-reduced-motion:reduce){
     *{animation:none !important; transition:none !important}
   }
@@ -179,6 +219,8 @@
       <nav class="nav">
         <a href="#features">Features</a>
         <a href="#screens">Screens</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#news">News</a>
         <a href="https://docs.eveconsole.com/">Docs</a>
         <a href="https://github.com/kernoeve/EveConsole">GitHub</a>
       </nav>
@@ -278,6 +320,97 @@
     document.querySelectorAll('.shot').forEach(function(el){ el.addEventListener('click', function(){ openLb(el); }); });
     lb.addEventListener('click', function(e){ if(e.target===lb || e.target.closest('.lb-close')) closeLb(); });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !lb.hidden) closeLb(); });
+  })();
+  </script>
+
+  <!-- roadmap -->
+  <section id="roadmap">
+    <div class="wrap">
+      <div class="sec-head"><span class="idx">04</span><h2>Road to 1.0</h2></div>
+      <div class="rm-head">
+        <span class="target">Target: <b>version 1.0</b></span>
+        <span class="disclaimer" id="rm-disclaimer"></span>
+      </div>
+      <div class="roadmap" id="roadmap-grid">
+        <p class="news-empty">Loading roadmap…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- news -->
+  <section id="news">
+    <div class="wrap">
+      <div class="sec-head"><span class="idx">05</span><h2>News &amp; announcements</h2></div>
+      <div class="news-list" id="news-list">
+        <p class="news-empty">Loading news…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- roadmap + news renderer -->
+  <script>
+  (function(){
+    var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    // Parse YYYY-MM-DD without Date() to avoid timezone drift.
+    function fmtDate(iso){
+      var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso||'');
+      if(!m) return iso||'';
+      return MONTHS[(+m[2])-1]+' '+(+m[3])+', '+m[1];
+    }
+    function el(tag,cls,text){ var e=document.createElement(tag); if(cls)e.className=cls; if(text!=null)e.textContent=text; return e; }
+
+    // ── News ──────────────────────────────────────────
+    fetch('data/news.json',{cache:'no-cache'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(items){
+      var host=document.getElementById('news-list'); host.textContent='';
+      if(!items||!items.length){ host.appendChild(el('p','news-empty','// No posts yet.')); return; }
+      items.forEach(function(it){
+        var item=el('article','news-item');
+        var meta=el('div','meta');
+        meta.appendChild(el('span','when','// '+fmtDate(it.date)));
+        var tagCls='tag'+(/release/i.test(it.tag||'')?' release':'');
+        meta.appendChild(el('span',tagCls,(it.tag||'News')));
+        item.appendChild(meta);
+        var body=el('div','body');
+        body.appendChild(el('h3',null,it.title||''));
+        if(it.summary) body.appendChild(el('p',null,it.summary));
+        if(it.link&&it.link.href){
+          var a=el('a','more',(it.link.label||'Read more')+' →'); a.href=it.link.href;
+          if(/^https?:\/\//.test(it.link.href)){ a.rel='noopener'; }
+          body.appendChild(a);
+        }
+        item.appendChild(body);
+        host.appendChild(item);
+      });
+    }).catch(function(){
+      var host=document.getElementById('news-list'); host.textContent='';
+      host.appendChild(el('p','news-empty','// News is temporarily unavailable.'));
+    });
+
+    // ── Roadmap ───────────────────────────────────────
+    var RM_STATUS={ planned:'Planned', progress:'In progress', done:'Done' };
+    fetch('data/roadmap.json',{cache:'no-cache'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(data){
+      var grid=document.getElementById('roadmap-grid'); grid.textContent='';
+      var disc=document.getElementById('rm-disclaimer');
+      if(disc&&data.note) disc.textContent='// '+data.note;
+      var items=data.items||[];
+      if(!items.length){ grid.appendChild(el('p','news-empty','// Roadmap coming soon.')); return; }
+      items.forEach(function(it,i){
+        var card=el('article','rmcard');
+        var top=el('div','top');
+        top.appendChild(el('span','num',(i<9?'0':'')+(i+1)));
+        var st=el('span','st '+(it.status||'planned'));
+        st.appendChild(el('span','s'));
+        st.appendChild(el('span',null,RM_STATUS[it.status]||'Planned'));
+        top.appendChild(st);
+        card.appendChild(top);
+        card.appendChild(el('h3',null,it.title||''));
+        if(it.note) card.appendChild(el('p',null,it.note));
+        grid.appendChild(card);
+      });
+    }).catch(function(){
+      var grid=document.getElementById('roadmap-grid'); grid.textContent='';
+      grid.appendChild(el('p','news-empty','// Roadmap is temporarily unavailable.'));
+    });
   })();
   </script>
 
