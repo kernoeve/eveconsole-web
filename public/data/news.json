@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-08-20",
+    "tag": "Release",
+    "title": "EVE Console 0.9.10 — one Worklist across all your characters",
+    "summary": "The biggest release yet — a month of work since 0.9.9. The centerpiece is the new Worklist: a single, always-current list of what to do next across all your characters, rebuilt on every refresh from nine sources — industry jobs, invention and copying, material purchases, standing buy orders, inventory shortfalls, corp projects, skill queues, logistics and asset safety. Around it land a stack of new tools: a Jump Planner for capital routes with draggable waypoints and per-leg fuel, a new Universe Map with security, industry, sovereignty and intel overlays and a page for every system, plus a Structure Browser, Standing Buy Orders, Sale Posting, LP Market Values, Alarms, entity browsing, and chat based intel monitoring for tracking movements of players and fleets. Industry and market pricing get sharper — contract based pricing for items that lack market pricing (i.e., BPCs), shopping lists, a corp monthly summary.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.10" }
+  },
+  {
     "date": "2026-07-21",
     "tag": "Release",
     "title": "EVE Console 0.9.9 — Eve Cortex is now EVE Console",
