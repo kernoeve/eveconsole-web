@@ -27,6 +27,11 @@
       "title": "Improved Embedded Agent Abilities",
       "status": "planned",
       "note": "Give the built-in AI agent more EVE and application context, plus an assortment of in-app tools so it can take on tasks you'd otherwise do by hand."
+    },
+    {
+      "title": "Alarms",
+      "status": "planned",
+      "note": "Complete the alarms system introduced in 0.9.10 — a fuller set of conditions to watch for and ways to be notified."
     }
   ]
 }
