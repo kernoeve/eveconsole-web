@@ -224,7 +224,7 @@
         <a href="https://docs.eveconsole.com/">Docs</a>
         <a href="https://github.com/kernoeve/EveConsole">GitHub</a>
       </nav>
-      <span class="meta">// Windows · Beta 0.9.x</span>
+      <span class="meta">// Windows · Beta <span data-version>0.9.10</span></span>
     </div>
   </div>
 
@@ -249,7 +249,7 @@
           View on GitHub
         </a>
       </div>
-      <p class="statusline">// Windows 10/11 &nbsp;·&nbsp; <b>Beta 0.9.x</b> &nbsp;·&nbsp; Nothing uploaded</p>
+      <p class="statusline">// Windows 10/11 &nbsp;·&nbsp; <b>Beta <span data-version>0.9.10</span></b> &nbsp;·&nbsp; Nothing uploaded</p>
     </div>
   </header>
 
@@ -273,12 +273,16 @@
     <div class="wrap">
       <div class="sec-head"><span class="idx">02</span><h2>What's inside</h2></div>
       <div class="grid">
-        <div class="cell"><div class="k">Market</div><div class="t">Pricing &amp; build costs</div><p>Per-item prices from the markets you define, with outlier filtering and build-cost floors — plus a computed build cost for every craftable item.</p></div>
-        <div class="cell"><div class="k">Industry</div><div class="t">Production Calculator</div><p>Plan jobs end to end: materials, multi-level builds, ME levels, and profit against your real structures and rigs.</p></div>
+        <div class="cell"><div class="k">Planning</div><div class="t">Worklist</div><p>One list of what to do next across all your characters — rebuilt on every refresh from nine sources: industry jobs, purchases, copying, logistics, projects, skills and more.</p></div>
+        <div class="cell"><div class="k">Industry</div><div class="t">Production Calculator</div><p>Plan jobs end to end: materials, multi-level builds, ME levels, and profit against your real structures and rigs. Missing materials become a shopping list.</p></div>
+        <div class="cell"><div class="k">Market</div><div class="t">Pricing &amp; build costs</div><p>Per-item prices from the markets you define, with outlier filtering — plus a computed build cost for every craftable item, and contract pricing where the market has none.</p></div>
         <div class="cell"><div class="k">Trade</div><div class="t">Opportunities</div><p>Compare two markets and surface profitable hauls, ranked by ISK and by cargo volume.</p></div>
+        <div class="cell"><div class="k">Universe</div><div class="t">Map &amp; systems</div><p>One continuous map from the whole cluster down to a single system, with overlays for security, kills, industry, sovereignty and intel — and a page for every system.</p></div>
+        <div class="cell"><div class="k">Navigation</div><div class="t">Jump Planner</div><p>Capital route planning with draggable waypoints and movable midpoints, showing fuel and distance for every leg.</p></div>
+        <div class="cell"><div class="k">Intel</div><div class="t">Chat-log monitoring</div><p>Turns your local channel logs into sightings — who was seen, where, and in what hull — to track the movements of players and fleets.</p></div>
+        <div class="cell"><div class="k">Corp</div><div class="t">Activity &amp; oversight</div><p>Ratting, industry and mining tax, donations, killmails, projects, a monthly summary, and Top&nbsp;10 leaderboards.</p></div>
         <div class="cell"><div class="k">Finance</div><div class="t">Wealth tracking</div><p>Net worth over time, plus a categorized breakdown of where your ISK comes from and goes.</p></div>
-        <div class="cell"><div class="k">Corp</div><div class="t">Activity &amp; oversight</div><p>Ratting, industry and mining tax, donations, killmails, projects, and Top&nbsp;10 leaderboards.</p></div>
-        <div class="cell"><div class="k">Browse</div><div class="t">Items, assets, contracts</div><p>Every item in the game with attributes, orders and price history — and search across all your assets and contracts.</p></div>
+        <div class="cell"><div class="k">Browse</div><div class="t">Items, assets &amp; entities</div><p>Every item with attributes, orders and price history; search across your assets and contracts; and browse every pilot, corp and alliance.</p></div>
         <div class="cell"><div class="k">Assistant</div><div class="t">AI agent (Eden)</div><p>An optional companion that can query your local data to answer what the UI doesn't. Inactive until you set it up.</p></div>
         <div class="cell"><div class="k">Upkeep</div><div class="t">Stays current</div><p>Installed builds check for updates and prompt you in-app — no manual re-downloading.</p></div>
       </div>
@@ -411,6 +415,13 @@
       var grid=document.getElementById('roadmap-grid'); grid.textContent='';
       grid.appendChild(el('p','news-empty','// Roadmap is temporarily unavailable.'));
     });
+
+    // ── Version label — auto-tracks the latest GitHub release; falls back to the hard-coded value ──
+    fetch('https://api.github.com/repos/kernoeve/EveConsole/releases/latest',{headers:{'Accept':'application/vnd.github+json'}})
+      .then(function(r){ return r.ok?r.json():null; })
+      .then(function(d){ if(d&&d.tag_name){ var v=d.tag_name.replace(/^v/,'');
+        document.querySelectorAll('[data-version]').forEach(function(e){ e.textContent=v; }); } })
+      .catch(function(){});
   })();
   </script>
 
