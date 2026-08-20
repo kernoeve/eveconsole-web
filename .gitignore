@@ -1,3 +1,6 @@
 ﻿node_modules/
 .DS_Store
 
+
+# Raw screenshot intake (un-redacted); processed into public/images and not committed
+incoming/
