@@ -1,6 +1,6 @@
 {
   "target": "1.0",
-  "updated": "2026-08-19",
+  "updated": "2026-08-20",
   "note": "Roadmap is indicative, not a commitment — priorities can shift.",
   "items": [
     {
@@ -22,6 +22,11 @@
       "title": "Standalone background service",
       "status": "planned",
       "note": "Separate the background workers — ESI polling and syncing — from the desktop client so they can run continuously on their own: headless, on another machine, or in a container."
+    },
+    {
+      "title": "Improved Embedded Agent Abilities",
+      "status": "planned",
+      "note": "Give the built-in AI agent more EVE and application context, plus an assortment of in-app tools so it can take on tasks you'd otherwise do by hand."
     }
   ]
 }
