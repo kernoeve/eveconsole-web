@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-08-21",
+    "tag": "Fix",
+    "title": "EVE Console 0.9.11 — fresh-install startup fix",
+    "summary": "A fix release: resolves a startup crash on fresh installs of 0.9.10 and the run of first-run-only bugs behind it. Upgrades from an earlier version were unaffected.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.11" }
+  },
+  {
     "date": "2026-08-20",
     "tag": "Release",
     "title": "EVE Console 0.9.10 — one Worklist across all your characters",
