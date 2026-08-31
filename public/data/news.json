@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-08-31",
+    "tag": "Release",
+    "title": "EVE Console 0.9.12 — EVE Mail Store, Scheduler & planner accuracy",
+    "summary": "A feature release. The headline is the new EVE Mail Store — buyers place and manage orders by mailing your store character simple commands (PRICES, ORDER, STATUS, CANCEL), and the app replies and books each one into Order Tracker. A new Scheduler, behind the title-bar clock, fires posts and alerts on a schedule — interval, weekly, monthly or yearly in EVE time — sending Corp Top 10s, monthly summaries, sale postings and charts to Slack. The Worklist adds Bottlenecks and Final Products tabs plus a deep accuracy pass on what the industry planner tells you to build, and Order Tracker, Sales Tracker and the Overview all gain upgrades. Under the hood, the periodic app hangs and stalled database writes are fixed.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.12" }
+  },
+  {
     "date": "2026-08-21",
     "tag": "Fix",
     "title": "EVE Console 0.9.11 — fresh-install startup fix",
