@@ -1,17 +1,12 @@
 {
   "target": "1.0",
-  "updated": "2026-08-20",
+  "updated": "2026-08-31",
   "note": "Roadmap is indicative, not a commitment — priorities can shift.",
   "items": [
     {
       "title": "Additional database backends",
       "status": "planned",
       "note": "Run EVE Console on databases beyond the built-in SQLite — starting with PostgreSQL — with migration paths to move your data between database types."
-    },
-    {
-      "title": "EVE Mail–driven market orders",
-      "status": "planned",
-      "note": "Drive market-order placement, tracking, and updates through in-game EVE Mail."
     },
     {
       "title": "Native Linux support",
