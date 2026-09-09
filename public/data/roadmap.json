@@ -1,22 +1,22 @@
 {
   "target": "1.0",
-  "updated": "2026-08-31",
+  "updated": "2026-09-08",
   "note": "Roadmap is indicative, not a commitment — priorities can shift.",
   "items": [
     {
       "title": "Additional database backends",
-      "status": "planned",
-      "note": "Run EVE Console on databases beyond the built-in SQLite — starting with PostgreSQL — with migration paths to move your data between database types."
+      "status": "done",
+      "note": "Delivered in 0.9.13. Run EVE Console on PostgreSQL instead of the built-in SQLite file, with an in-app test-and-copy that migrates an existing database across — and several clients sharing one server."
     },
     {
       "title": "Native Linux support",
-      "status": "planned",
-      "note": "First-class, compiled Linux releases of EVE Console alongside Windows."
+      "status": "done",
+      "note": "Delivered in 0.9.13. First-class, self-updating Linux builds — an AppImage or a tarball — ship alongside the Windows builds with every release."
     },
     {
       "title": "Standalone background service",
-      "status": "planned",
-      "note": "Separate the background workers — ESI polling and syncing — from the desktop client so they can run continuously on their own: headless, on another machine, or in a container."
+      "status": "done",
+      "note": "Delivered in 0.9.13. The ESI polling, importing and alarm work can run headless — on another machine or in a container — as a systemd user unit or Windows service, independent of the desktop client."
     },
     {
       "title": "Improved Embedded Agent Abilities",

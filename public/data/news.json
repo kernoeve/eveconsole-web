@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-09-08",
+    "tag": "Community",
+    "title": "Join the EVE Console Discord",
+    "summary": "EVE Console now has a Discord server — a place to ask for help, share feedback and feature ideas, report bugs, and hear about new releases first. Everyone's welcome, whether you're already running the app or just weighing it up.",
+    "link": { "label": "Join the Discord", "href": "https://discord.gg/H6NaAjJMar" }
+  },
+  {
+    "date": "2026-09-08",
+    "tag": "Release",
+    "title": "EVE Console 0.9.13 — Linux, PostgreSQL, background processing & themes",
+    "summary": "The biggest release since the rename, and it clears three items off the Road to 1.0 at once. EVE Console now runs natively on Linux, with self-updating builds shipping alongside Windows. It can keep its data on a PostgreSQL server instead of a local SQLite file — so several clients on several machines share one set of data — with an in-app test-and-copy to migrate an existing database across. The background work (ESI polling, imports, alarms) can now run headless, on another machine or in a container, independent of the desktop client. And the interface is themeable, with six light and dark themes and a title-bar picker. Alongside that: the Worklist's upward-scroll bug is fixed, the SDE import is safer and now reads packaged volumes, and a long run of market, wallet and industry fixes lands. One upgrade note — run Update SDE once after installing.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.13" }
+  },
+  {
     "date": "2026-08-31",
     "tag": "Release",
     "title": "EVE Console 0.9.12 — EVE Mail Store, Scheduler & planner accuracy",
