@@ -36,7 +36,7 @@
     {
       "title": "Ship fitting tool",
       "status": "planned",
-      "note": "Build and assess ship fits inside EVE Console — slots, modules and charges — drawing on the item, market and skill data it already holds."
+      "note": "View and edit your in-game saved fittings and your ships' current fits, and build new ones — slots, modules and charges — assessed against the item, market and skill data EVE Console already holds."
     },
     {
       "title": "Planetary Interaction tools",
