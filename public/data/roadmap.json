@@ -1,6 +1,6 @@
 {
   "target": "1.0",
-  "updated": "2026-09-08",
+  "updated": "2026-09-22",
   "note": "Roadmap is indicative, not a commitment — priorities can shift.",
   "items": [
     {
@@ -19,13 +19,18 @@
       "note": "Delivered in 0.9.13. The ESI polling, importing and alarm work can run headless — on another machine or in a container — as a systemd user unit or Windows service, independent of the desktop client."
     },
     {
+      "title": "Web-based storefront",
+      "status": "done",
+      "note": "Delivered in 0.9.14. A public web storefront for your in-app store, hosted on your own Cloudflare account: buyers sign in with EVE SSO, browse your price list, and place orders that flow straight into the app."
+    },
+    {
       "title": "Improved Embedded Agent Abilities",
-      "status": "planned",
+      "status": "progress",
       "note": "Give the built-in AI agent more EVE and application context, plus an assortment of in-app tools so it can take on tasks you'd otherwise do by hand."
     },
     {
       "title": "Alarms",
-      "status": "planned",
+      "status": "progress",
       "note": "Complete the alarms system introduced in 0.9.10 — a fuller set of conditions to watch for and ways to be notified."
     }
   ]
