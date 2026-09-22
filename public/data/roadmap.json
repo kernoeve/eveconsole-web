@@ -32,6 +32,16 @@
       "title": "Alarms",
       "status": "progress",
       "note": "Complete the alarms system introduced in 0.9.10 — a fuller set of conditions to watch for and ways to be notified."
+    },
+    {
+      "title": "Ship fitting tool",
+      "status": "planned",
+      "note": "Build and assess ship fits inside EVE Console — slots, modules and charges — drawing on the item, market and skill data it already holds."
+    },
+    {
+      "title": "Planetary Interaction tools",
+      "status": "planned",
+      "note": "Tools for Planetary Interaction: track your colonies and extractors, plan production, and fold PI chores like restarting extractors and hauling into the Worklist."
     }
   ]
 }
