@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-09-22",
+    "tag": "Release",
+    "title": "EVE Console 0.9.14 — Web storefronts, agent tools & Item Valuation",
+    "summary": "A big release that pushes another Road to 1.0 item over the line. Stores can now sell through a web storefront — a site you host on your own Cloudflare account where buyers sign in with EVE SSO, browse your price list, and place orders that flow straight into the app. The built-in AI agent gains tools of its own — it can query your data, reach ESI, open windows, set a destination and manage alarms — plus OpenAI and local models alongside Claude, and an AI Usage & Cost view. A new Item Valuation tool appraises any pasted list against your own market data, three ways at once: market, build, and reprocessed. Alarms grow a staged 'wake-up call' for a ship left undocked or freshly jumped, a Ship Undocks check, store-order events and active hours, and the Contracts tool is reworked with scope and status filters and offered/requested item breakdowns. Rounding it out: the Worklist loads in seconds over a slow link, EVE Mail renders as EVE wrote it with reply and forward, a Background Processes monitor replaces the old polling text, the interface scales from 50% to 200%, and ESI stands down cleanly for Tranquility's nightly downtime — with a long run of fixes across the worklist, order tracker and grids. Upgrade note: update every client that shares a database.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.14" }
+  },
+  {
     "date": "2026-09-08",
     "tag": "Community",
     "title": "Join the EVE Console Discord",
