@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-09-28",
+    "tag": "Community",
+    "title": "EVE Console is on YouTube",
+    "summary": "EVE Console now has a YouTube channel of short, practical how-to videos — one task at a time, narrated as it's done. The Getting Started playlist is up with the first three: installing the app and adding your characters, setting up your markets, and setting up an Indy Park so build costs match what you actually pay. More are on the way, covering the rest of the setup and then the tools themselves. New videos are announced in the Discord's #videos channel as they go live.",
+    "link": { "label": "Watch on YouTube", "href": "https://youtube.com/@EVEConsole" }
+  },
+  {
     "date": "2026-09-22",
     "tag": "Release",
     "title": "EVE Console 0.9.14 — Web storefronts, agent tools & Item Valuation",
