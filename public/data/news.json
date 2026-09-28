@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-09-28",
+    "tag": "Release",
+    "title": "EVE Console 0.9.15 — Agent models with roles, voices & contracts by the unit",
+    "summary": "The built-in AI agent can now use more than one model: pick each from its service's own list, then give them roles — one to talk, one to answer questions about your data, one to summarise — with a router between them, a hand-off, and a fallback that says when it steps in. Its voice gets the same treatment: a named list of voices across Kokoro, OpenAI, ElevenLabs and local voice servers such as Chatterbox and Orpheus, with announced failover, the next sentence prepared while one plays, and the same volume from every one of them. The Order Tracker now counts contracts by the unit, so an order can go out over several contracts and one contract can carry several orders. Corp Activity counts only members as active players and keeps every day of moon mining, so mining totals come back up. Alongside that: a new Assets tab in the Item Browser, notification cards on the Overview, a Characters tab in Settings, and fixes across Indy Parks, Industry Opportunities, themes and more — plus a settings file that a failed read can no longer wipe. Upgrade note: update every client that shares a database.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.15" }
+  },
+  {
+    "date": "2026-09-28",
     "tag": "Community",
     "title": "EVE Console is on YouTube",
     "summary": "EVE Console now has a YouTube channel of short, practical how-to videos — one task at a time, narrated as it's done. The Getting Started playlist is up with the first three: installing the app and adding your characters, setting up your markets, and setting up an Indy Park so build costs match what you actually pay. More are on the way, covering the rest of the setup and then the tools themselves. New videos are announced in the Discord's #videos channel as they go live.",
