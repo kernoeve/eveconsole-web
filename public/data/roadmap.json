@@ -1,6 +1,6 @@
 {
   "target": "1.0",
-  "updated": "2026-09-22",
+  "updated": "2026-09-28",
   "note": "Roadmap is indicative, not a commitment — priorities can shift.",
   "items": [
     {
@@ -32,6 +32,11 @@
       "title": "Alarms",
       "status": "progress",
       "note": "Complete the alarms system introduced in 0.9.10 — a fuller set of conditions to watch for and ways to be notified."
+    },
+    {
+      "title": "Multi-language support",
+      "status": "progress",
+      "note": "Use EVE Console in your own language, chosen in Settings. Simplified Chinese comes first, with more languages to follow; anything not yet translated shows in English."
     },
     {
       "title": "Ship fitting tool",
