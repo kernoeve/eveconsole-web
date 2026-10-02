@@ -1,6 +1,6 @@
 {
   "target": "1.0",
-  "updated": "2026-09-28",
+  "updated": "2026-10-02",
   "note": "Roadmap is indicative, not a commitment — priorities can shift.",
   "items": [
     {
@@ -25,28 +25,28 @@
     },
     {
       "title": "Improved Embedded Agent Abilities",
-      "status": "progress",
-      "note": "Give the built-in AI agent more EVE and application context, plus an assortment of in-app tools so it can take on tasks you'd otherwise do by hand."
+      "status": "done",
+      "note": "Delivered across 0.9.14–0.9.16. The built-in AI agent knows EVE and the app, works with in-app tools — querying your data, reaching ESI, opening windows, managing alarms — and can use several models with roles and an announced fallback, speaking through a named list of voices."
     },
     {
       "title": "Alarms",
-      "status": "progress",
-      "note": "Complete the alarms system introduced in 0.9.10 — a fuller set of conditions to watch for and ways to be notified."
+      "status": "done",
+      "note": "Delivered in 0.9.16. The alarms system introduced in 0.9.10, completed: intel around your characters, game log events, ships left undocked, store orders, Planetary Industry and more — announced with sounds and voice, within the hours you choose."
     },
     {
       "title": "Multi-language support",
-      "status": "progress",
-      "note": "Use EVE Console in your own language, chosen in Settings. Simplified Chinese comes first, with more languages to follow; anything not yet translated shows in English."
+      "status": "done",
+      "note": "Delivered in 0.9.16. EVE Console in eight languages, chosen in Settings, with item and system names as the game shows them."
     },
     {
       "title": "Ship fitting tool",
-      "status": "progress",
-      "note": "View and edit your in-game saved fittings and your ships' current fits, and build new ones — slots, modules and charges — assessed against the item, market and skill data EVE Console already holds."
+      "status": "done",
+      "note": "Delivered in 0.9.16. View and edit your in-game saved fittings and your ships' current fits, and build new ones — slots, modules and charges — assessed against the item, market and skill data EVE Console already holds."
     },
     {
       "title": "Planetary Interaction tools",
-      "status": "planned",
-      "note": "Tools for Planetary Interaction: track your colonies and extractors, plan production and profitability, and fold PI chores like restarting extractors and hauling into the Worklist."
+      "status": "done",
+      "note": "Delivered in 0.9.16. Track your colonies and extractors, forecast storage and production, see each planet's profit, and get alerts and Worklist tasks for PI chores like restarting extractors and hauling."
     }
   ]
 }
