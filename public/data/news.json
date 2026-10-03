@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-02",
+    "tag": "Release",
+    "title": "EVE Console 0.9.16 — Eight languages, fitting, Planetary Industry, a new Universe Map & Discord",
+    "summary": "The release that finishes the Road to 1.0. EVE Console now speaks eight languages — English, Simplified Chinese, German, Spanish, French, Japanese, Korean and Russian — with items and places named as the game client names them. A new fitting tool, built on the SDE's own dogma rules, opens your in-game fittings or any ship you own. Planetary Industry tools forecast every colony, show each planet's profit, and put extractor restarts and hauling on the Worklist. The Universe Map gains tabs, live hostiles and your own characters, route and jump planners, and jump bridges under the new Ansiblex zone rules. The main window splits in two and tools detach into windows of their own. EVE Console can now post to Discord as well as Slack, the entity viewer shows zKillboard's full record, and background ESI work paces itself to stay inside ESI's limits. Upgrade notes: update every client that shares a database; on Windows your data moves out of the install folder on the first start, so Setup and uninstall can no longer delete it; and Settings now save as you change them.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.16" }
+  },
+  {
     "date": "2026-09-28",
     "tag": "Release",
     "title": "EVE Console 0.9.15 — Agent models with roles, voices & contracts by the unit",
