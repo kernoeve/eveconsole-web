@@ -263,10 +263,12 @@
   <section class="about">
     <div class="wrap">
       <div class="sec-head"><span class="idx">01</span><h2>One console for the tools you already juggle</h2></div>
-      <p>EVE&nbsp;Console pulls your characters' and corporation's data from EVE's ESI API into a local SQLite database on your PC, and turns it into the tools you'd otherwise spread across a handful of separate apps and spreadsheets — market pricing, industry planning, wealth tracking, and corp oversight. It refreshes in the background while it runs, and your data never leaves your machine.</p>
+      <p>EVE&nbsp;Console pulls your characters' and corporation's data from EVE's ESI API into a database on your PC — a local file by default, or a PostgreSQL server you share between machines — and turns it into the tools you'd otherwise spread across a handful of separate apps and spreadsheets — market pricing, industry planning, wealth tracking, and corp oversight. It refreshes in the background while it runs, and your data never leaves your machine.</p>
       <div class="chips">
         <span class="chip good">Free &amp; open source</span>
         <span class="chip">Your data stays on <b>your device</b></span>
+        <span class="chip">Windows &amp; Linux</span>
+        <span class="chip">8 languages</span>
         <span class="chip">Background ESI sync</span>
         <span class="chip">Auto-updates</span>
         <span class="chip">Optional AI agent</span>
@@ -279,17 +281,25 @@
     <div class="wrap">
       <div class="sec-head"><span class="idx">02</span><h2>What's inside</h2></div>
       <div class="grid">
-        <div class="cell"><div class="k">Planning</div><div class="t">Worklist</div><p>One list of what to do next across all your characters — rebuilt on every refresh from nine sources: industry jobs, purchases, copying, logistics, projects, skills and more.</p></div>
+        <div class="cell"><div class="k">Planning</div><div class="t">Worklist</div><p>One list of what to do next across all your characters — rebuilt on every refresh from eleven sources: industry jobs, purchases, logistics, Planetary Industry, skills and more.</p></div>
         <div class="cell"><div class="k">Industry</div><div class="t">Production Calculator</div><p>Plan jobs end to end: materials, multi-level builds, ME levels, and profit against your real structures and rigs. Missing materials become a shopping list.</p></div>
+        <div class="cell"><div class="k">Industry</div><div class="t">Planetary Industry</div><p>Every colony at a glance: extractor timers, storage and production forecasts, and profit per planet — with alerts and Worklist tasks for the chores.</p></div>
+        <div class="cell"><div class="k">Ships</div><div class="t">Fitting</div><p>Open your in-game fittings, or any ship you own, as a fit — and build or edit fits with their numbers worked out for the pilot you choose.</p></div>
         <div class="cell"><div class="k">Market</div><div class="t">Pricing &amp; build costs</div><p>Per-item prices from the markets you define, with outlier filtering — plus a computed build cost for every craftable item, and contract pricing where the market has none.</p></div>
         <div class="cell"><div class="k">Trade</div><div class="t">Opportunities</div><p>Compare two markets and surface profitable hauls, ranked by ISK and by cargo volume.</p></div>
-        <div class="cell"><div class="k">Universe</div><div class="t">Map &amp; systems</div><p>One continuous map from the whole cluster down to a single system, with overlays for security, kills, industry, sovereignty and intel — and a page for every system.</p></div>
-        <div class="cell"><div class="k">Navigation</div><div class="t">Jump Planner</div><p>Capital route planning with draggable waypoints and movable midpoints, showing fuel and distance for every leg.</p></div>
-        <div class="cell"><div class="k">Intel</div><div class="t">Chat-log monitoring</div><p>Turns your local channel logs into sightings — who was seen, where, and in what hull — to track the movements of players and fleets.</p></div>
-        <div class="cell"><div class="k">Corp</div><div class="t">Activity &amp; oversight</div><p>Ratting, industry and mining tax, donations, killmails, projects, a monthly summary, and Top&nbsp;10 leaderboards.</p></div>
         <div class="cell"><div class="k">Sales</div><div class="t">Order &amp; Sales Tracking</div><p>Keeps track of your pending orders and monitors sales across contracts and the market for profitability.</p></div>
+        <div class="cell"><div class="k">Sales</div><div class="t">Stores</div><p>Sell to other players through an EVE-mail store or a web storefront you host yourself — their orders flow straight into the app.</p></div>
+        <div class="cell"><div class="k">Universe</div><div class="t">Map &amp; systems</div><p>One continuous map from the whole cluster down to a single system, with overlays for what's happening across New Eden — and a page for every system.</p></div>
+        <div class="cell"><div class="k">Navigation</div><div class="t">Routes &amp; jumps</div><p>Plan routes with an avoid list and Thera/Turnur shortcuts, capital jumps with fuel for every leg, jump range, and your jump bridges.</p></div>
+        <div class="cell"><div class="k">Intel</div><div class="t">Live intel</div><p>Kills from zKillboard and reports from your intel channels mark hostiles on the map as they happen — who was seen, where, and in what hull.</p></div>
+        <div class="cell"><div class="k">Alerts</div><div class="t">Alarms</div><p>Know when it matters: a ship left undocked, hostiles near your characters, etc. — announced with sound and voice, within the hours you choose.</p></div>
+        <div class="cell"><div class="k">Corp</div><div class="t">Activity &amp; oversight</div><p>Ratting, industry and mining tax, donations, killmails, projects, a monthly summary, and Top&nbsp;10 leaderboards.</p></div>
+        <div class="cell"><div class="k">Reporting</div><div class="t">Slack &amp; Discord</div><p>Post corp reports, Top&nbsp;10s, sale postings and charts to your channels — on demand, or on a schedule in EVE time.</p></div>
         <div class="cell"><div class="k">Browse</div><div class="t">Items, assets &amp; entities</div><p>Every item with attributes, orders and price history; search across your assets and contracts; and browse every pilot, corp and alliance.</p></div>
-        <div class="cell"><div class="k">Assistant</div><div class="t">AI agent (Eden)</div><p>An optional companion that can query your local data to answer what the UI doesn't. Inactive until you set it up.</p></div>
+        <div class="cell"><div class="k">Assistant</div><div class="t">AI agent (Eden)</div><p>An optional assistant that answers from your own data and works the app for you — on a free local model, Claude or OpenAI, with voice if you like. Off until you set it up.</p></div>
+        <div class="cell"><div class="k">Scale</div><div class="t">Shared &amp; headless</div><p>Run on PostgreSQL so several PCs share one set of data, and keep the background work going headless, as a service or in a container.</p></div>
+        <div class="cell"><div class="k">Language</div><div class="t">Eight languages</div><p>English, Chinese, German, Spanish, French, Japanese, Korean or Russian — with items and places named as the game client names them.</p></div>
+        <div class="cell"><div class="k">Layout</div><div class="t">Your way</div><p>Eight themes, scaling from 50% to 200%, and tools side by side or in windows of their own on a second screen.</p></div>
         <div class="cell"><div class="k">Upkeep</div><div class="t">Stays current</div><p>Installed builds check for updates and prompt you in-app — no manual re-downloading.</p></div>
       </div>
     </div>
