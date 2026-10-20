@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-19",
+    "tag": "Release",
+    "title": "EVE Console 0.9.17 — Stores that buy, hauling plans, Docker & .NET 10",
+    "summary": "Stores can now buy as well as sell: a store carries several listings, each Sell or Buy, so players can offer you their goods by EVE mail or on your web storefront, and their offers are matched to the contracts they make you. The Worklist now plans hauling trip by trip — loops within a system, nearby runs and long-distance trips, each with its manifest — and buys the datacores and decryptors invention needs. The Production Calculator groups jobs by station with a shopping list for each, Income & Expense lists every entry, and Planetary Industry gains a colony map. The headless worker now runs in Docker beside its PostgreSQL server, the app moves to .NET 10, and an SDE load on SQLite waits out a busy database instead of starting over.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.17" }
+  },
+  {
     "date": "2026-10-02",
     "tag": "Release",
     "title": "EVE Console 0.9.16 — Eight languages, fitting, Planetary Industry, a new Universe Map & Discord",
