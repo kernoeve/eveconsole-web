@@ -20,7 +20,7 @@
     "SERVICE_VERSION": "0.1.0",
     "API_HOST": "api.eveconsole.com",
     "IMAGE_HOST": "img.eveconsole.com",
-    "EVE_CLIENT_ID": "REPLACE-WITH-THE-EVE-APPLICATION-CLIENT-ID",
+    "EVE_CLIENT_ID": "cb852ea95cbd4773b52215c3f85c3785",
 
     // The limits on each character, here so they can change without touching the code.
     "MAX_IMAGE_BYTES": "5242880",      // 5 MB an image
