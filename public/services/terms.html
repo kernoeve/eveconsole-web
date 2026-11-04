@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Online Services Terms — EVE Console</title>
+<meta name="description" content="The terms for EVE Console's optional online services, including image hosting for Slack webhooks, and how to report abuse.">
+<link rel="icon" href="/favicon.ico">
+<style>
+  :root{
+    --ground:#0b0b0f; --panel:#13131c; --line:#242433; --line-2:#2f2f42;
+    --amber:#c8a84b; --gold:#e6c163;
+    --text:#c9c9d6; --head:#ececf2; --muted:#7a7a8c;
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--ground); color:var(--text);
+    font-family:var(--sans); font-size:16px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--gold); text-decoration:none}
+  a:hover{color:var(--amber); text-decoration:underline}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:2px}
+  .titlebar{
+    background:rgba(9,9,13,.92); border-bottom:1px solid var(--line);
+    font-family:var(--mono); font-size:12px; letter-spacing:.1em;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:0 24px}
+  .titlebar .wrap{display:flex; align-items:center; gap:14px; height:38px}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber)}
+  .name{color:var(--head)}
+  .name b{color:var(--amber)}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); margin:48px 0 8px}
+  h1{color:var(--head); font-size:clamp(28px,5vw,38px); line-height:1.15; margin:0 0 16px; text-wrap:balance}
+  h2{color:var(--head); font-size:19px; margin:36px 0 8px}
+  p{margin:0 0 12px}
+  ul{margin:0 0 12px; padding-left:22px}
+  li{margin:0 0 6px}
+  .lead{font-size:18px; color:var(--head)}
+  .report{background:var(--panel); border:1px solid var(--line-2); border-radius:6px; padding:16px 20px; margin:20px 0 0}
+  .report p:last-child{margin-bottom:0}
+  footer{border-top:1px solid var(--line); margin-top:56px; padding:22px 0 40px; color:var(--muted); font-size:14px}
+</style>
+</head>
+<body>
+  <div class="titlebar">
+    <div class="wrap">
+      <span class="dot" aria-hidden="true"></span>
+      <a class="name" href="/">EVE <b>CONSOLE</b></a>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <p class="eyebrow">Online services</p>
+    <h1>Online Services Terms</h1>
+    <p class="lead">EVE Console's online services are optional. The app works without them, and they are only used once you sign in from Settings.</p>
+    <p>They currently host images, so a Slack webhook can show the charts EVE Console draws. By signing in, you agree to these terms.</p>
+
+    <div class="report">
+      <p><strong>To report an image,</strong> email <a href="mailto:abuse@eveconsole.com">abuse@eveconsole.com</a> with its link and what is wrong with it.</p>
+    </div>
+
+    <h2>Signing in</h2>
+    <ul>
+      <li>You sign in with an EVE Online character, using EVE's own sign-in page. The sign-in asks for no permissions, so it cannot read your wallet, your mail or anything else in your account.</li>
+      <li>Everything uploaded from your EVE Console database is tied to that character.</li>
+    </ul>
+
+    <h2>What you may upload</h2>
+    <p>The service is for images to do with EVE Online and EVE Console, posted through the app. Do not upload anything that:</p>
+    <ul>
+      <li>is illegal, sexually explicit or graphically violent</li>
+      <li>you do not have the right to share</li>
+      <li>harasses, threatens or exposes anyone, including their real-world personal details</li>
+    </ul>
+    <p>Do not use the service as general image hosting, or try to get round its limits.</p>
+
+    <h2>Your images are public to anyone with the link</h2>
+    <p>Links are long and random, so they cannot be guessed, but anyone who has one can see the image without signing in. That includes anyone in a channel you post it to. Think about that before posting figures you would not want shared.</p>
+
+    <h2>Limits and expiry</h2>
+    <p>Each character may upload images of up to 5 MB, hold 100 MB at once, and upload 50 images a UTC day. These limits may change.</p>
+    <p>An image is removed when it expires, after 12 months at most, or sooner if the app asks for a shorter time. You can also delete your images at any time. A post that uses a removed image may then show nothing where the image was, and services you posted it to, such as Slack, may keep their own copy.</p>
+
+    <h2>What is kept about you</h2>
+    <ul>
+      <li>Your character's ID and name, and the owner hash EVE's sign-in provides</li>
+      <li>When you first and last signed in</li>
+      <li>A scrambled copy of the key your app signs in with, and the day it was last used</li>
+      <li>Each image you have not deleted, with its size, its dimensions, when it was uploaded and when it expires</li>
+      <li>How many images you uploaded on the current day</li>
+    </ul>
+    <p>Your character's record stays after you sign out, so that uploads can be traced and bans can hold. The service sets no cookies and does not sell anything it holds. It runs on Cloudflare, which also processes requests to it.</p>
+
+    <h2>When something goes wrong</h2>
+    <p>Images that break these terms can be removed, and characters can be banned, with or without notice. A ban removes all of that character's images.</p>
+    <p>The services are free and come with no guarantee. They may change, stop or lose data at any time, so keep your own copy of anything that matters.</p>
+
+    <footer>
+      <p>EVE Console is a third-party tool and is not affiliated with or endorsed by CCP Games. EVE Online and the EVE logo are trademarks of CCP hf. All EVE-related materials are property of CCP hf.</p>
+    </footer>
+  </main>
+</body>
+</html>
