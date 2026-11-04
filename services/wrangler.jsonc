@@ -1,0 +1,40 @@
+// The services the EVE Console app calls. A Worker of its own, apart from the homepage's: nothing
+// here can take the homepage down, and uploaded images never share its address.
+//
+// ⚠️ This file must stay wrangler.jsonc. Wrangler looks for a .jsonc all the way up the folders
+// before it looks for a .toml, so a wrangler.toml here loses to the homepage's config in the folder
+// above, and a deploy from here would deploy the homepage.
+//
+// README.md has the setup steps. EVE_CLIENT_ID is public, like the app's own; ADMIN_TOKEN is a
+// secret (npx wrangler secret put ADMIN_TOKEN).
+{
+  "name": "eveconsole-services",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-01",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "api.eveconsole.com", "custom_domain": true },
+    { "pattern": "img.eveconsole.com", "custom_domain": true }
+  ],
+  "vars": {
+    "SERVICE_VERSION": "0.1.0",
+    "API_HOST": "api.eveconsole.com",
+    "IMAGE_HOST": "img.eveconsole.com",
+    "EVE_CLIENT_ID": "REPLACE-WITH-THE-EVE-APPLICATION-CLIENT-ID",
+
+    // The limits on each character, here so they can change without touching the code.
+    "MAX_IMAGE_BYTES": "5242880",      // 5 MB an image
+    "MAX_STORED_BYTES": "104857600",   // 100 MB held at once
+    "MAX_UPLOADS_PER_DAY": "50",       // a UTC day
+    "MAX_EXPIRES_IN_DAYS": "365"       // also the default
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "eveconsole-services", "database_id": "REPLACE-WITH-THE-DATABASE-ID" }
+  ],
+  "r2_buckets": [
+    { "binding": "IMAGES", "bucket_name": "eveconsole-images" }
+  ],
+  // Expired images are purged once a day.
+  "triggers": { "crons": ["17 3 * * *"] },
+  "observability": { "enabled": true }
+}
