@@ -29,7 +29,7 @@
     "MAX_EXPIRES_IN_DAYS": "365"       // also the default
   },
   "d1_databases": [
-    { "binding": "DB", "database_name": "eveconsole-services", "database_id": "REPLACE-WITH-THE-DATABASE-ID" }
+    { "binding": "DB", "database_name": "eveconsole-services", "database_id": "6c1aa64e-f156-4b1f-b9fa-dbbff5f1e369" }
   ],
   "r2_buckets": [
     { "binding": "IMAGES", "bucket_name": "eveconsole-images" }
