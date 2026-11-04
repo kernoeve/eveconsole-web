@@ -87,6 +87,7 @@
   .statusline{font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--faint);
     margin:22px 0 0; text-transform:uppercase}
   .statusline b{color:var(--amber)}
+  .macnote{font-size:13px; color:var(--muted); margin:10px auto 0; max-width:64ch; text-shadow:0 1px 14px rgba(0,0,0,.7)}
 
   /* ── section chrome ─────────────────────────────── */
   section{padding:76px 0; border-bottom:1px solid var(--line)}
@@ -226,7 +227,7 @@
         <a href="https://discord.gg/H6NaAjJMar" rel="noopener">Discord</a>
         <a href="https://youtube.com/@EVEConsole" rel="noopener">YouTube</a>
       </nav>
-      <span class="meta">// Windows · Linux · Beta <span data-version>0.9.17</span></span>
+      <span class="meta">// Windows · Linux · macOS · Beta <span data-version>0.9.18</span></span>
     </div>
   </div>
 
@@ -246,6 +247,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
           Download for Linux
         </a>
+        <a class="btn" href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-osx-arm64-Setup.pkg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          Download for Mac
+        </a>
         <a class="btn" href="https://docs.eveconsole.com/">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11a3 3 0 013 3v11M4 5v14a2 2 0 002 2h11M4 5a2 2 0 012-2h9"/></svg>
           Documentation
@@ -255,7 +260,8 @@
           View on GitHub
         </a>
       </div>
-      <p class="statusline">// Windows 10/11 &nbsp;·&nbsp; Linux &nbsp;·&nbsp; <b>Beta <span data-version>0.9.17</span></b></p>
+      <p class="statusline">// Windows 10/11 &nbsp;·&nbsp; Linux &nbsp;·&nbsp; macOS &nbsp;·&nbsp; <b>Beta <span data-version>0.9.18</span></b></p>
+      <p class="macnote">The Mac download is for Apple Silicon (M1 and later); there is also an <a href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-osx-x64-Setup.pkg">Intel Mac installer</a>. It isn't signed by Apple yet, so <a href="https://docs.eveconsole.com/running-on-macos/">macOS asks you to allow it</a> the first time.</p>
     </div>
   </header>
 
@@ -263,11 +269,11 @@
   <section class="about">
     <div class="wrap">
       <div class="sec-head"><span class="idx">01</span><h2>One console for the tools you already juggle</h2></div>
-      <p>EVE&nbsp;Console pulls your characters' and corporation's data from EVE's ESI API into a database on your PC — a local file by default, or a PostgreSQL server you share between machines — and turns it into the tools you'd otherwise spread across a handful of separate apps and spreadsheets — market pricing, industry planning, wealth tracking, and corp oversight. It refreshes in the background while it runs, and your data never leaves your machine.</p>
+      <p>EVE&nbsp;Console pulls your characters' and corporation's data from EVE's ESI API into a database on your computer — a local file by default, or a PostgreSQL server you share between machines — and turns it into the tools you'd otherwise spread across a handful of separate apps and spreadsheets — market pricing, industry planning, wealth tracking, and corp oversight. It refreshes in the background while it runs, and your data never leaves your machine.</p>
       <div class="chips">
         <span class="chip good">Free &amp; open source</span>
         <span class="chip">Your data stays on <b>your device</b></span>
-        <span class="chip">Windows &amp; Linux</span>
+        <span class="chip">Windows, Linux &amp; macOS</span>
         <span class="chip">8 languages</span>
         <span class="chip">Background ESI sync</span>
         <span class="chip">Auto-updates</span>
@@ -293,13 +299,13 @@
         <div class="cell"><div class="k">Navigation</div><div class="t">Routes &amp; jumps</div><p>Plan routes with an avoid list and Thera/Turnur shortcuts, capital jumps with fuel for every leg, jump range, and your jump bridges.</p></div>
         <div class="cell"><div class="k">Intel</div><div class="t">Live intel</div><p>Kills from zKillboard and reports from your intel channels mark hostiles on the map as they happen — who was seen, where, and in what hull.</p></div>
         <div class="cell"><div class="k">Alerts</div><div class="t">Alarms</div><p>Know when it matters: a ship left undocked, hostiles near your characters, etc. — announced with sound and voice, within the hours you choose.</p></div>
-        <div class="cell"><div class="k">Corp</div><div class="t">Activity &amp; oversight</div><p>Ratting, industry and mining tax, donations, killmails, projects, a monthly summary, and Top&nbsp;10 leaderboards.</p></div>
+        <div class="cell"><div class="k">Corp</div><div class="t">Activity &amp; oversight</div><p>Ratting, industry and mining tax, donations, killmails, projects, a monthly summary, Top&nbsp;10 leaderboards — plus your structures, their fuel and your Mercenary Dens.</p></div>
         <div class="cell"><div class="k">Reporting</div><div class="t">Slack &amp; Discord</div><p>Post corp reports, Top&nbsp;10s, sale postings and charts to your channels — on demand, or on a schedule in EVE time.</p></div>
         <div class="cell"><div class="k">Browse</div><div class="t">Items, assets &amp; entities</div><p>Every item with attributes, orders and price history; search across your assets and contracts; and browse every pilot, corp and alliance.</p></div>
         <div class="cell"><div class="k">Assistant</div><div class="t">AI agent (Eden)</div><p>An optional assistant that answers from your own data and works the app for you — on a free local model, Claude or OpenAI, with voice if you like. Off until you set it up.</p></div>
-        <div class="cell"><div class="k">Scale</div><div class="t">Shared &amp; headless</div><p>Run on PostgreSQL so several PCs share one set of data, and keep the background work going headless, as a service or in a container.</p></div>
+        <div class="cell"><div class="k">Scale</div><div class="t">Shared &amp; headless</div><p>Run on PostgreSQL so several computers share one set of data, and keep the background work going headless, as a service or in a container.</p></div>
         <div class="cell"><div class="k">Language</div><div class="t">Eight languages</div><p>English, Chinese, German, Spanish, French, Japanese, Korean or Russian — with items and places named as the game client names them.</p></div>
-        <div class="cell"><div class="k">Layout</div><div class="t">Your way</div><p>Eight themes, scaling from 50% to 200%, and tools side by side or in windows of their own on a second screen.</p></div>
+        <div class="cell"><div class="k">Layout</div><div class="t">Your way</div><p>Eight themes or your own, scaling from 50% to 200%, and tools side by side or in windows of their own on a second screen.</p></div>
         <div class="cell"><div class="k">Upkeep</div><div class="t">Stays current</div><p>Installed builds check for updates and prompt you in-app — no manual re-downloading.</p></div>
       </div>
     </div>
@@ -455,10 +461,11 @@
   <section class="cta">
     <div class="wrap">
       <span class="eyebrow">Ready when you are</span>
-      <p>Download the Windows or Linux build and log in a character — everything stays on your machine.</p>
+      <p>Download the Windows, Linux or macOS build and log in a character — everything stays on your machine.</p>
       <div class="actions" style="justify-content:center">
         <a class="btn primary" href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-win-Setup.exe">Download for Windows</a>
         <a class="btn" href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole.AppImage">Download for Linux</a>
+        <a class="btn" href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-osx-arm64-Setup.pkg">Download for Mac</a>
         <a class="btn" href="https://github.com/kernoeve/EveConsole/releases/latest">All downloads</a>
         <a class="btn" href="https://docs.eveconsole.com/getting-started/">Setup guide</a>
       </div>
@@ -477,6 +484,8 @@
           <div class="col"><h4>Get it</h4>
             <a href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-win-Setup.exe">Windows installer</a>
             <a href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole.AppImage">Linux AppImage</a>
+            <a href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-osx-arm64-Setup.pkg">Mac installer (Apple Silicon)</a>
+            <a href="https://github.com/kernoeve/EveConsole/releases/latest/download/EveConsole-osx-x64-Setup.pkg">Mac installer (Intel)</a>
             <a href="https://github.com/kernoeve/EveConsole/releases/latest">All releases</a>
           </div>
           <div class="col"><h4>Learn</h4>

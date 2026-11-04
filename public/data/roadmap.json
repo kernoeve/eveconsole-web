@@ -1,6 +1,6 @@
 {
   "target": "1.0",
-  "updated": "2026-10-02",
+  "updated": "2026-11-03",
   "note": "Roadmap is indicative, not a commitment — priorities can shift.",
   "items": [
     {
@@ -12,6 +12,11 @@
       "title": "Native Linux support",
       "status": "done",
       "note": "Delivered in 0.9.13. First-class, self-updating Linux builds — an AppImage or a tarball — ship alongside the Windows builds with every release."
+    },
+    {
+      "title": "Native macOS support",
+      "status": "done",
+      "note": "Delivered in 0.9.18. Self-updating installers for Apple Silicon and Intel Macs ship alongside the Windows and Linux builds with every release."
     },
     {
       "title": "Standalone background service",

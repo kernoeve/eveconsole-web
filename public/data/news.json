@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-11-04",
+    "tag": "Release",
+    "title": "EVE Console 0.9.18 — Now on macOS, Corp Structures & Mercenary Dens",
+    "summary": "EVE Console now runs on macOS, on Apple Silicon and Intel: self-updating installers ship alongside the Windows and Linux builds. They aren't signed by Apple yet, so macOS asks you to allow the app the first time. Corp Structures and Mercenary Dens are new tools with their own alerts, and the Worklist now says what really stops each job and plans hauling around it. Also new: Indy Parks Compare, a System Index tool, your own colour themes, and an Industry Opportunities summary that can post on a schedule.",
+    "link": { "label": "Release notes", "href": "https://github.com/kernoeve/EveConsole/releases/tag/v0.9.18" }
+  },
+  {
     "date": "2026-10-19",
     "tag": "Release",
     "title": "EVE Console 0.9.17 — Stores that buy, hauling plans, Docker & .NET 10",
